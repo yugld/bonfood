@@ -1,5 +1,6 @@
+import Headline from "@bonfood-new-src/components/Headline";
+import SwiperReact from "@bonfood-new-src/libs/Swiper/Swiper";
 import { usePageMeta } from "@ssr-client/usePage";
-import { FC } from "react";
 
 interface Recipe {
   imageSrc: string;
@@ -7,48 +8,17 @@ interface Recipe {
   title: string;
 }
 
-interface RecipeCardProps {
-  imageSrc: string;
-  title: string;
-}
-
-const RecipeCard: FC<RecipeCardProps> = ({ imageSrc, title }) => {
-  const themeUrl = usePageMeta<string>("themeUrl");
-  return (
-    <a href="/single-recipe/" className="swiper-slide shrink-0">
-      <div className="image mb-2 h-60 relative overflow-hidden rounded-3xl">
-        <img
-          className="hover:scale-125 transition-transform duration-300 ease-in-out h-full w-full object-cover"
-          src={themeUrl + imageSrc}
-          alt=""
-        />
-      </div>
-      <div className="content flex justify-center">
-        <div className="title font-semibold hover:text-primary">{title}</div>
-      </div>
-    </a>
-  );
-};
-
-interface RecipeListProps {
-  recipes: Recipe[];
-}
-
-const RecipeList: FC<RecipeListProps> = ({ recipes }) => (
-  <div className="container recipes__wrapper relative mx-auto px-5 w-full lg:w-4/5 3xl:w-2/3 space-y-12">
-    {/* <h2>Новости и рецепты блюд</h2> */}
-
-    <div className="recipes__swiper swiper overflow-hidden">
-      <div className="swiper-wrapper flex">
-        {recipes.map((recipe, index) => (
-          <RecipeCard key={index} {...recipe} />
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const recipes = [
+const recipes: Recipe[] = [
+  {
+    imageSrc: "/img/recipes/iceCream.jpg",
+    date: "11.11.2023 г.",
+    title: "Домашнее мороженое",
+  },
+  {
+    imageSrc: "/img/recipes/soup.jpg",
+    date: "11.11.2023 г.",
+    title: "Чечевичный суп",
+  },
   {
     imageSrc: "/img/recipes/iceCream.jpg",
     date: "11.11.2023 г.",
@@ -71,8 +41,47 @@ const recipes = [
   },
 ];
 
-function Recipes() {
-  return <RecipeList recipes={recipes} />;
+function RecipesSection() {
+  const themeUrl = usePageMeta<string>("themeUrl");
+  const renderSlide = (recipe: Recipe) => ({
+    key: recipe.date, // Use a unique key for each slide
+    element: (
+      <a href="/single-recipe/" className="swiper-slide shrink-0">
+        <div className="image mb-2 h-60 relative overflow-hidden rounded-3xl">
+          <img
+            className="hover:scale-125 transition-transform duration-300 ease-in-out h-full w-full object-cover"
+            src={themeUrl + recipe.imageSrc}
+            alt=""
+          />
+        </div>
+        <div className="content flex justify-center">
+          <div className="title font-semibold hover:text-primary">
+            {recipe.title}
+          </div>
+        </div>
+      </a>
+    ),
+  });
+  return (
+    <section className="recipes">
+      <div className="container recipes__wrapper relative mx-auto px-5 w-full lg:w-4/5 3xl:w-2/3 space-y-12">
+        <Headline text="Новости и рецепты блюд" />
+        <SwiperReact
+          data={recipes}
+          renderSlide={renderSlide}
+          perView={1}
+          perViewBreakpoints={{
+            sm: 2,
+            md: 3,
+            lg: 4,
+          }}
+          spaceBetween={20}
+          navigation={true}
+          autoplay={3000}
+        />
+      </div>
+    </section>
+  );
 }
 
-export default Recipes;
+export default RecipesSection;

@@ -1,7 +1,7 @@
-import SwiperComponent from "@init-src/libs/Swiper/SwiperComponent";
-import SwiperNavigation from "@init-src/libs/Swiper/SwiperNavigation";
-import SwiperSlide from "@init-src/libs/Swiper/SwiperSlide";
-import SwiperWrapper from "@init-src/libs/Swiper/SwiperWrapper";
+import SwiperComponent from "@bonfood-new-src/libs/Swiper/SwiperComponent";
+import SwiperNavigation from "@bonfood-new-src/libs/Swiper/SwiperNavigation";
+import SwiperSlide from "@bonfood-new-src/libs/Swiper/SwiperSlide";
+import SwiperWrapper from "@bonfood-new-src/libs/Swiper/SwiperWrapper";
 import { cn } from "@init-src/utils/cn";
 
 import {

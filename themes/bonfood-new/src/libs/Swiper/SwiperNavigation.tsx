@@ -14,7 +14,7 @@ export default function SwiperNavigation({
     <>
       <div
         className={cn(
-          "hidden sm:block z-20 absolute -left-5 top-1/2 p-2 text-black rounded-lg cursor-pointer",
+          "hidden sm:block z-20 absolute -left-5 top-[40%] p-2 text-black rounded-lg cursor-pointer",
           "bg-white shadow-sm hover:text-white hover:bg-primary-500",
           `${name}__left ${name}`,
           className,
@@ -25,7 +25,7 @@ export default function SwiperNavigation({
 
       <div
         className={cn(
-          "hidden sm:block z-20 absolute -right-5 top-1/2 p-2 text-black rounded-lg cursor-pointer",
+          "hidden sm:block z-20 absolute -right-5 top-[40%] p-2 text-black rounded-lg cursor-pointer",
           "bg-white shadow-sm hover:text-white hover:bg-primary-500",
           `${name}__right ${name}`,
           className,
