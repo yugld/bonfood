@@ -1,3 +1,4 @@
+import Container from "@bonfood-new-src/components/Container";
 import Headline from "@bonfood-new-src/components/Headline";
 import { cn } from "@init-src/utils/cn";
 import { usePageMeta } from "@ssr-client/usePage";
@@ -35,14 +36,14 @@ function Categories() {
 
   return (
     <>
-      <div className="container mx-auto px-5 lg:px-0 lg:w-4/5 3xl:w-2/3 space-y-12">
+      <Container>
         <Headline text="Категории" />
         <div className="categories__wrapper grid grid-cols-1 grid-rows-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 auto-rows-[18rem] sm:auto-rows-[15rem] lg:auto-rows-[14rem]">
           {categoriesData.map((category, index) => (
-            <div
+            <a
               key={index}
               className={cn(
-                "grid-item relative group overflow-hidden rounded-lg",
+                "grid-item relative group overflow-hidden rounded-lg cursor-pointer",
                 `${category.gridClasses}`,
               )}
             >
@@ -57,10 +58,10 @@ function Categories() {
                 </span>
                 <div className="h-0.5 w-1/2 bg-white rounded"></div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
-      </div>
+      </Container>
     </>
   );
 }

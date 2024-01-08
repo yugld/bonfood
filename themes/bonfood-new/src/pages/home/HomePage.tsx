@@ -1,3 +1,4 @@
+import Benefits from "@bonfood-new-src/pages/home/components/Benefits";
 import Categories from "@bonfood-new-src/pages/home/components/Categories";
 import InitHome from "@bonfood-new-src/pages/home/components/InitHome";
 import RecipesSection from "@bonfood-new-src/pages/home/components/Recipes";
@@ -11,6 +12,7 @@ function HomePage() {
       {/* <OurProducts /> */}
       {/* <SpecialOffers /> */}
       <RecipesSection />
+      <Benefits />
     </div>
   );
 }

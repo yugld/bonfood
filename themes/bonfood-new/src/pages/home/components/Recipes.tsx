@@ -1,3 +1,4 @@
+import Container from "@bonfood-new-src/components/Container";
 import Headline from "@bonfood-new-src/components/Headline";
 import SwiperReact from "@bonfood-new-src/libs/Swiper/Swiper";
 import { usePageMeta } from "@ssr-client/usePage";
@@ -64,7 +65,7 @@ function RecipesSection() {
   });
   return (
     <section className="recipes">
-      <div className="container recipes__wrapper relative mx-auto px-5 w-full lg:w-4/5 3xl:w-2/3 space-y-12">
+      <Container>
         <Headline text="Новости и рецепты блюд" />
         <SwiperReact
           data={recipes}
@@ -79,7 +80,7 @@ function RecipesSection() {
           navigation={true}
           autoplay={3000}
         />
-      </div>
+      </Container>
     </section>
   );
 }
