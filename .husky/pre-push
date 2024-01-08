@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# if [ -f ./.setup/.env ]; then
+#     set -a
+#     . ./.setup/.env
+#     set +a
+
+#     if [ -n "$PROJECT" ]; then
+#         container_name="${PROJECT}_wordpress"
+#         if [ "$(docker ps -q -f name=${container_name})" ]; then
+#           branch=$(git rev-parse --abbrev-ref HEAD)
+#           #docker exec -t "$container_name" bash -c ". ~/.bashrc && cd /var/www/html/dev/.setup/libraries/branch-name-lint && node index.cjs $branch"
+#         else
+#           echo "\033[37m\033[41m ERROR \033[0m \033[32m Container "$container_name" not found! Please run docker-compose first!\033[0m"
+#           exit 1
+#         fi
+#     else
+#         echo "PROJECT variable not set in .env file"
+#         exit 1
+#     fi
+# else
+#     echo "No .env file found in $(pwd)/.setup directory"
+#     exit 1
+# fi

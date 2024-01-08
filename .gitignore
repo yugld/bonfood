@@ -1,0 +1,21 @@
+.setup/vendor/
+.setup/volumes/
+node_modules
+composer.lock
+package-lock.json
+.env
+
+# Ignore submodules
+themes/init/
+app/init/
+SSR/dist/
+./assets/
+
+./themes/init
+./app/init
+
+www/
+
+plugins/cyr2lat
+uploads
+bundle

@@ -1,0 +1,48 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+    volumes:
+      - wp-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - mysql_network
+
+  wordpress:
+    container_name: wordpress
+    image: initkz/init-wp:latest
+    ports:
+      - '8081:80'
+    depends_on:
+      - mysql
+    environment:
+      WORDPRESS_DB_HOST: $DB_HOST
+      WORDPRESS_DB_PORT: $DB_PORT
+      WORDPRESS_DB_NAME: $DB_NAME
+      WORDPRESS_DB_USER: $DB_USER
+      WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+      WP_SITE_URL: $WP_SITE_URL
+      WP_SITE_TITLE: $WP_SITE_TITLE
+      WP_ADMIN_USER: $WP_ADMIN_USER
+      WP_ADMIN_PASSWORD: $WP_ADMIN_PASSWORD
+      WP_ADMIN_EMAIL: $WP_ADMIN_EMAIL
+      WP_ENVIRONMENT_TYPE: 'production'
+      WATCH: false
+    volumes:
+      - ./app:/var/www/html/app
+      - ./themes:/var/www/html/www/wp-content/themes
+    networks:
+      - mysql_network
+
+networks:
+  mysql_network:
+
+
+volumes:
+  wp-mysql:

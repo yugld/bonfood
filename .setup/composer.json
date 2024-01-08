@@ -1,0 +1,17 @@
+{
+  "require-dev": {
+    "nunomaduro/phpinsights": "^2.9"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "insights": "./vendor/bin/phpinsights --config-path=./phpinsights.php analyse ./../app ./../themes/init",
+    "insights-fix": "./vendor/bin/phpinsights --fix --config-path=./phpinsights.php analyse ./../app ./../themes/init",
+    "make-pot-theme": "wp i18n make-pot --path=./../themes/init ./../themes/init/languages/init.pot",
+    "make-pot-app": "wp i18n make-pot ./../app/init ./../app/init/languages/init.pot",
+    "init-env": "./../scripts/init.sh"
+  }
+}

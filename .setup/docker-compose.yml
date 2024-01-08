@@ -1,0 +1,79 @@
+version: '3'
+services:
+  mysql:
+    container_name: '${PROJECT}_mysql'
+    image: 'mysql:latest'
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+    volumes:
+      - './volumes/mysql:/var/lib/mysql'
+    restart: always
+    networks:
+      - mysql_network
+  wordpress:
+    container_name: '${PROJECT}_wordpress'
+    image: 'initkz/init-wp:latest'
+    ports:
+      - '80:80'
+      - '5173:5173'
+    depends_on:
+      - mysql
+    environment:
+      _UID: $UID
+      _GID: $GID
+      WORDPRESS_DB_HOST: $DB_HOST
+      WORDPRESS_DB_PORT: $DB_PORT
+      WORDPRESS_DB_NAME: $DB_NAME
+      WORDPRESS_DB_USER: $DB_USER
+      WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+      WP_SITE_TITLE: $WP_SITE_TITLE
+      WP_ADMIN_USER: $WP_ADMIN_USER
+      WP_ADMIN_PASSWORD: $WP_ADMIN_PASSWORD
+      WP_ADMIN_EMAIL: $WP_ADMIN_EMAIL
+      WP_ENVIRONMENT_TYPE: local
+      WP_SITE_URL: $WP_SITE_URL
+      PROJECT: $PROJECT
+      SERVER_NAME: $SERVER_NAME
+      VITE_PORT: $VITE_PORT
+      YMAPS_API_KEY: $YMAPS_API_KEY
+      WATCH: true
+    volumes:
+      - '../app:/var/www/html/app'
+      - '../SSR:/var/www/html/SSR'
+      - '../themes:/var/www/html/www/wp-content/themes'
+      - '../uploads:/var/www/html/www/wp-content/uploads'
+      - '../plugins:/var/www/html/www/wp-content/plugins'
+      - '../:/var/www/html/dev'
+      - '../assets:/var/www/html/www/assets'
+      - '../.setup/extend-php.ini:/etc/php/8.2/fpm/conf.d/extend-php.ini'
+      - 'wordpress:/var/www/html/www'
+    networks:
+      - mysql_network
+      - mailpit_network
+  phpmyadmin:
+    container_name: '${PROJECT}_phpmyadmin'
+    image: 'phpmyadmin:latest'
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      PMA_HOSTS: mysql
+      PMA_ABSOLUTE_URI: '${WP_SITE_URL}/pma'
+    restart: always
+    networks:
+      - mysql_network
+  mailpit:
+    container_name: '${PROJECT}_mailpit'
+    image: 'axllent/mailpit:latest'
+    ports:
+      - '8025:8025'
+    networks:
+      - mailpit_network
+networks:
+  mysql_network: null
+  mailpit_network: null
+volumes:
+  wordpress: null

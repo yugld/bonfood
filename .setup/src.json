@@ -1,0 +1,78 @@
+[
+  {
+    "type": "ssr",
+    "ssr": true,
+    "path": "./SSR/ssr.ts",
+    "output": "./SSR/bundle/",
+    "enabled": true
+  },
+  {
+    "type": "app",
+    "path": ["./app/src/scripts/main.ts", "./app/src/styles/main.css"],
+    "output": "./bundle/app",
+    "basePath": "/bundle/app",
+    "tailwindContent": ["./app/**/*.{php,tsx,jsx}"],
+    "tailwindContentExcluede": ["./app/init/**/*.{php,tsx,jsx}"],
+    "enabled": true
+  },
+  {
+    "type": "app_init",
+    "path": [
+      "./app/init/src/scripts/main.ts",
+      "./app/init/src/styles/main.css",
+      "./app/init/src/styles/tailwind.css"
+    ],
+    "output": "./bundle/init_app",
+    "basePath": "/bundle/init_app",
+    "tailwindContent": "./app/init/**/*.{php,tsx,jsx}",
+    "enabled": true
+  },
+
+  {
+    "type": "init",
+    "path": ["./themes/init/src/main.ts", "./themes/init/src/main.css"],
+    "output": "./themes/init/bundle",
+    "basePath": "/wp-content/themes/init/bundle",
+    "tailwindContent": ["./themes/init/**/*.{php,tsx,jsx}"],
+    "manualChunks": {
+      "react-basic": [
+        "react",
+        "react-router-dom",
+        "react-dom",
+        "react-dom/client",
+        "react-dom/server",
+        "i18next"
+      ],
+      "interaction": ["use-mask-input", "zod", "react-hook-form"],
+      "ui-libs": ["tailwind-merge", "swiper"]
+    },
+    "enabled": true
+  },
+
+  {
+    "type": "bonfood-new",
+    "path": [
+      "./themes/bonfood-new/src/main.ts",
+      "./themes/bonfood-new/src/main.css"
+    ],
+    "output": "./themes/bonfood-new/bundle",
+    "basePath": "/wp-content/themes/bonfood-new/bundle",
+    "tailwindContent": [
+      "./themes/bonfood-new/**/*.{php,tsx,jsx}",
+      "./themes/init/**/*.{php,tsx,jsx}"
+    ],
+    "manualChunks": {
+      "react-basic": [
+        "react",
+        "react-router-dom",
+        "react-dom",
+        "react-dom/client",
+        "react-dom/server",
+        "i18next"
+      ],
+      "interaction": ["use-mask-input", "zod", "react-hook-form"],
+      "ui-libs": ["tailwind-merge", "swiper"]
+    },
+    "enabled": true
+  }
+]

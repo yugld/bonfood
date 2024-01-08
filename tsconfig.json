@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "./",
+      "node_modules/@types",
+    ],
+    "types": [
+      "node",
+      "./env.d.ts",
+    ],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "allowUmdGlobalAccess": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@ssr-client/*": [
+        "./SSR/client/*"
+      ],
+      "@init-src/*": [
+        "./themes/init/src/*"
+      ],
+      "@i18n/*": [
+        "./i18n/*"
+      ],
+      "@app/*": [
+        "./app/src/scripts/*"
+      ],
+      "@app-init/*": [
+        "./app/init/src/scripts/*"
+      ],
+      "@bonfood-new-src/*": [
+        "./themes/bonfood-new/src/*"
+      ],
+    }
+  },
+  "exclude": [
+    "./www",
+    "./node_modules"
+  ]
+}

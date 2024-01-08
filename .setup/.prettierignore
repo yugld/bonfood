@@ -1,0 +1,16 @@
+.next
+public
+node_modules
+yarn.lock
+package-lock.json
+**/*.test.js
+coverage
+vendor/
+docker-compose.prod.yml
+docker-compose.yml
+libraries/
+assets
+
+
+dist
+.setup

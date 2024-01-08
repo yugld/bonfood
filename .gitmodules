@@ -1,0 +1,6 @@
+[submodule "themes/init"]
+	path = themes/init
+	url = git@github.com:INITKZ/init_theme.git
+[submodule "app/init"]
+	path = app/init
+	url = git@github.com:INITKZ/init_app.git
