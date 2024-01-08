@@ -11,7 +11,7 @@ function SwiperSlide({ children, swiperSlideClasses }: SwiperSlideProps) {
     <div
       className={cn(
         "swiper-slide relative block w-full flex-shrink-0 transition-transform",
-        "p-3 my-3",
+        "",
         swiperSlideClasses,
       )}
     >
