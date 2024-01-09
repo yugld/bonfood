@@ -45,7 +45,7 @@ const recipes: Recipe[] = [
 function RecipesSection() {
   const themeUrl = usePageMeta<string>("themeUrl");
   const renderSlide = (recipe: Recipe) => ({
-    key: recipe.date, // Use a unique key for each slide
+    key: recipe.date,
     element: (
       <a href="/single-recipe/" className="swiper-slide shrink-0">
         <div className="image mb-2 h-60 relative overflow-hidden rounded-3xl">

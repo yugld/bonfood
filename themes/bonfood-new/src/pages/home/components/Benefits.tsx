@@ -70,7 +70,7 @@ function Benefits() {
             sm: 1,
             lg: 3,
           }}
-          spaceBetween={0}
+          spaceBetween={48}
           autoplay={5000}
           swiperClasses="benefits__swiper"
           swiperWrapperClasses=""

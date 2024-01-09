@@ -13,6 +13,7 @@ function HomePage() {
       {/* <SpecialOffers /> */}
       <RecipesSection />
       <Benefits />
+      {/* <Offers /> */}
     </div>
   );
 }

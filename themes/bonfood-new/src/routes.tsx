@@ -1,3 +1,6 @@
+import NotFound from "@bonfood-new-src/components/NotFound";
+import AboutPage from "@bonfood-new-src/pages/about/AboutPage";
+import HomePage from "@bonfood-new-src/pages/home/HomePage";
 import { RouteType } from "@init-src/components/AppRoutes";
 import LoginPage from "@init-src/pages/auth/LoginPage";
 import RegisterPage from "@init-src/pages/auth/RegisterPage";
@@ -8,14 +11,18 @@ import DashbaordHistoryPage from "@init-src/pages/dashboard/DashboardHistoryPage
 import DashbaordPage from "@init-src/pages/dashboard/DashboardPage";
 import FavoritesPage from "@init-src/pages/favorites/FavoritesPage";
 import OrdersPage from "@init-src/pages/orders/OrdersPage";
-import NotFound from "@bonfood-new-src/components/NotFound";
-import HomePage from "@bonfood-new-src/pages/home/HomePage";
 
 export const routes: RouteType[] = [
   {
     path: "/",
     name: "home",
     getElement: () => <HomePage />,
+    addLngPrefix: true,
+  },
+  {
+    path: "/about",
+    name: "about",
+    getElement: () => <AboutPage />,
     addLngPrefix: true,
   },
   {
