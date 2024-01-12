@@ -34,7 +34,7 @@ function Awards() {
           element: (
             <img
               src={themeUrl + image}
-              className="h-full hover:scale-125 transition-transform duration-300 ease-in-out"
+              className="h-full hover:scale-120 transition-transform duration-300 ease-in-out"
             />
           ),
         })}

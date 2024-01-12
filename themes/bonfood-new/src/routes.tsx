@@ -1,5 +1,6 @@
 import NotFound from "@bonfood-new-src/components/NotFound";
 import AboutPage from "@bonfood-new-src/pages/about/AboutPage";
+import ContactsPage from "@bonfood-new-src/pages/contacts/ContactsPage";
 import HomePage from "@bonfood-new-src/pages/home/HomePage";
 import { RouteType } from "@init-src/components/AppRoutes";
 import LoginPage from "@init-src/pages/auth/LoginPage";
@@ -23,6 +24,12 @@ export const routes: RouteType[] = [
     path: "/about",
     name: "about",
     getElement: () => <AboutPage />,
+    addLngPrefix: true,
+  },
+  {
+    path: "/contacts",
+    name: "contacts",
+    getElement: () => <ContactsPage />,
     addLngPrefix: true,
   },
   {

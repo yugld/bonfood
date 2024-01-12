@@ -5,7 +5,7 @@ import Awards from "@bonfood-new-src/pages/about/components/Awords";
 function AboutPage() {
   return (
     <PageContent sectionName="about">
-      <div className="flex flex-col space-y-12 mb-12">
+      <div className="flex flex-col space-y-12">
         <AboutText />
         <Awards />
       </div>
